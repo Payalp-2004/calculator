@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS-Only Calculator (Flat Display)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f0f0f0;
+    }
+    .calculator {
+      background: #fff;
+      width: 240px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .display {
+      background: #222;
+      color: #fff;
+      font-size: 2em;
+      text-align: right;
+      padding: 15px;
+      box-sizing: border-box;
+
+      /* Remove circle => make it flat rectangle */
+      border-radius: 0;
+      /* optionally you can add a slight bottom border for effect */
+      border-bottom: 1px solid #444;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .buttons label {
+      background: #eee;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 1.2em;
+      cursor: pointer;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+      user-select: none;
+      /* Remove circular button style if any */
+      border-radius: 0;
+    }
+    .buttons input {
+      display: none;
+    }
+    /* Buttons colours */
+    .buttons label.operator {
+      background: #f9a825;
+      color: #fff;
+    }
+    .buttons label.equal {
+      background: #0d47a1;
+      color: #fff;
+      grid-column: span 2;
+    }
+
+    /* CSS states for display text (demo only) */
+    input#btn0:checked ~ .display::after { content: "0"; }
+    input#btn1:checked ~ .display::after { content: "1"; }
+    input#btn2:checked ~ .display::after { content: "2"; }
+    input#btn3:checked ~ .display::after { content: "3"; }
+    input#btn4:checked ~ .display::after { content: "4"; }
+    input#btn5:checked ~ .display::after { content: "5"; }
+    input#btn6:checked ~ .display::after { content: "6"; }
+    input#btn7:checked ~ .display::after { content: "7"; }
+    input#btn8:checked ~ .display::after { content: "8"; }
+    input#btn9:checked ~ .display::after { content: "9"; }
+    input#btnPlus:checked ~ .display::after { content: "+"; }
+    input#btnMinus:checked ~ .display::after { content: "-"; }
+    input#btnMul:checked ~ .display::after { content: "×"; }
+    input#btnDiv:checked ~ .display::after { content: "÷"; }
+    input#btnEq:checked ~ .display::after { content: "= 42"; color: green; }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="radio" id="btn0" name="btn">
+    <input type="radio" id="btn1" name="btn">
+    <input type="radio" id="btn2" name="btn">
+    <input type="radio" id="btn3" name="btn">
+    <input type="radio" id="btn4" name="btn">
+    <input type="radio" id="btn5" name="btn">
+    <input type="radio" id="btn6" name="btn">
+    <input type="radio" id="btn7" name="btn">
+    <input type="radio" id="btn8" name="btn">
+    <input type="radio" id="btn9" name="btn">
+    <input type="radio" id="btnPlus" name="btn">
+    <input type="radio" id="btnMinus" name="btn">
+    <input type="radio" id="btnMul" name="btn">
+    <input type="radio" id="btnDiv" name="btn">
+    <input type="radio" id="btnEq" name="btn">
+
+    <div class="display"></div>
+
+    <div class="buttons">
+      <label for="btn7">7</label>
+      <label for="btn8">8</label>
+      <label for="btn9">9</label>
+      <label for="btnDiv" class="operator">÷</label>
+
+      <label for="btn4">4</label>
+      <label for="btn5">5</label>
+      <label for="btn6">6</label>
+      <label for="btnMul" class="operator">×</label>
+
+      <label for="btn1">1</label>
+      <label for="btn2">2</label>
+      <label for="btn3">3</label>
+      <label for="btnMinus" class="operator">-</label>
+
+      <label for="btn0">0</label>
+      <label for="btnPlus" class="operator">+</label>
+      <label for="btnEq" class="equal">=</label>
+      <!-- If you want a Clear button you can add one too -->
+      <label for="btn0">C</label>
+    </div>
+  </div>
+</body>
+</html>
